@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Maritime Transport</title>
+        <link href="style.css" rel="stylesheet">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="plotly-2.16.1.min.js"></script>
+    </head>
+    <body onload="onLoad()">
+        <div class="menu">
+            <h2>Data about Gross Weight Of Goods Handled in All Ports in Europe</h2>
+            <select id="years"></select>
+            <p>This dahsboard represents data related to the gross weight of goods handled in all European ports according to the year selected in the drop-down menu. We have, following the order from left to right and from top to bottom, a map indicating the types of goods most handled in the country (the information is available with the mouse), a map indicating the quantity of goods handled by country, a bar chart indicating the quantity of imported and exported goods, a polar chart to visualize the quantity transported of each type of goods, a pie chart to visualize the most important countries in the maritime goods traffic and an evolution of the maritime traffic since the years 2000. All quantities are given in THS_T. The meaning of "GT" codes is available <a href="https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=CL_NST2007&StrLanguageCode=EN&IntPcKey=&StrLayoutCode=HIERARCHIC">here</a>.</p>
+        </div>
+        <div class="piechart">
+            <div id="ths_t_piechart"></div>
+        </div>
+        <div class="radar">
+            <div id="radar"></div>
+        </div>
+        <div class="in_out_bar">
+            <div id="in_out_bar"></div>
+        </div>
+        <div class="linechart">
+            <div id="lineschart"></div>
+        </div>
+        <div class="choro">
+            <div id="choro"></div>
+        </div>
+        <div class="bubble">
+            <div id="map"></div>
+        </div>
+    </body>
+</html>
+<script src="viz.js"></script>
+<script>
+    function onLoad(){
+        let yearsDropdown = document.getElementById("years");
+        let years = Array.from({length: 14}, (value, index) => 2008 + index);
+        for(let i = 0; i < years.length; i++){
+            let option = document.createElement("option");
+            option.value = years[i];
+            option.text = years[i];
+            yearsDropdown.appendChild(option);
+        }
+    }
+</script>
